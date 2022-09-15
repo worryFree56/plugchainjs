@@ -6,9 +6,19 @@ name: npm-package
 on:
   push:
     tags:
-      - "test/*"
+      - "test/**"
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm install
+      - run: npm test
+
   publish-gpr:
     needs: build
     runs-on: ubuntu-latest
@@ -24,7 +34,8 @@ jobs:
       - name: Install dependencies 📦️
         run: npm install
       - name: build
-        run: npm run build
+      - run: 
+          npm run build
       - uses: worryfree/github-pages-deploy-action@releases/v3
         with:
           # 指定密钥，即在第一步中设置的
