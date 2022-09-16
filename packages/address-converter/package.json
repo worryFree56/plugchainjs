@@ -1,5 +1,5 @@
 {
-  "name": "@onp/address-converter",
+  "name": "@plugchain/address-converter",
   "version": "0.1.0",
   "description": "Address converter,converter ETH address to Ethermint/Plugchain address.",
   "main": "dist/index.js",
